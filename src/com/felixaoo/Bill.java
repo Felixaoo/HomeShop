@@ -1,13 +1,16 @@
 package com.felixaoo;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Bill {
     private Customer customer;
-    private Map<String, Integer> products;
+    private Map<Product, Integer> products = new HashMap<Product, Integer>();
+    private Delivery delivery;
 
     public Bill(Customer customer) {
         this.customer = customer;
+        this.delivery = delivery;
     }
 
     /**
@@ -16,14 +19,14 @@ public class Bill {
      * @param quantity the quantity of the product
      */
     public void addProduct(Product product, Integer quantity){
-        this.products.put(product, quantity);
+        this.products.put( product, quantity);
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public Map<String, Integer> getProducts() {
+    public Map<Product, Integer> getProducts() {
         return products;
     }
 }
