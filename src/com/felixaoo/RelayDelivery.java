@@ -16,4 +16,7 @@ public class RelayDelivery implements Delivery {
         else
         return 4.99;
     }
+   public String getInfo(){
+        return "Livraison en relai" + getPrice() + "€";
+   }
 }

@@ -4,11 +4,11 @@ public class Customer {
     private String name;
     private String adress;
 
-    public String getName() {
+    public String getFullName() {
         return name;
     }
 
-    public String getAdress() {
+    public String getAddress() {
         return adress;
     }
 
