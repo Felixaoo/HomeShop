@@ -1,5 +1,8 @@
 package com.felixaoo;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,8 +60,11 @@ public class Bill {
             writer.writeLine("");
         }
         writer.writeLine("Livraison : " + delivery.getPrice());
-        writer.writeLine("-----------------------------------------------------");
-        writer.writeLine("Total : " + this.getTotal());
+        writer.writeLine("-----------------------------------------------------" );
+        double total2 = BigDecimal.valueOf(this.getTotal())
+                .setScale(2, RoundingMode.HALF_UP)
+                .doubleValue();
+        writer.writeLine("Total : " + total2);
         writer.stop();
     }
 
@@ -66,13 +72,14 @@ public class Bill {
      * get the total price for the current bill, including products and delivery cost
      * @return total price
      */
-    public double getTotal() {
-        double total = delivery.getPrice();
-        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
-            Product product = entry.getKey();
-            Integer quantity = entry.getValue();
-            total += product.getPrice() * quantity;
-        }
-        return total;
+
+        public double getTotal(){
+            double total =delivery.getPrice();
+            for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+                Product product = entry.getKey();
+                Integer quantity = entry.getValue();
+                total += product.getPrice() * quantity;
+            }
+            return total;
     }
 }

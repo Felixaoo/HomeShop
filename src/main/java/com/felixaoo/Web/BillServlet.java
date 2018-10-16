@@ -66,9 +66,11 @@ public class BillServlet extends HttpServlet {
                 bill.addProduct(product, quantity);
             }
             bill.generate(new Writer() {
+
                 @Override
                 public void start() {
                 }
+
                 @Override
                 public void writeLine(String line) {
                     try {
